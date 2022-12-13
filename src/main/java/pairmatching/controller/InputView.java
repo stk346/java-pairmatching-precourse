@@ -19,4 +19,14 @@ public class InputView {
         return input.replace(" ", "").split(",");
 
     }
+
+    public static String enterRematchingMessageAndGet() {
+        System.out.println("매칭 정보가 있습니다. 다시 매칭하시겠습니까?");
+        System.out.println("네 | 아니오");
+        String input = Console.readLine();
+        if (!input.equals("네") && !input.equals("아니오")) {
+            throw new IllegalArgumentException("네, 아니오만 입력할 수 있습니다.");
+        }
+        return input;
+    }
 }
