@@ -1,5 +1,8 @@
 package pairmatching.view;
 
+import pairmatching.domain.Pair;
+import pairmatching.domain.Pairs;
+
 public class OutputView {
     public static void showMainDisPlayMessage() {
         System.out.println("기능을 선택하세요.");
@@ -19,5 +22,13 @@ public class OutputView {
                             "  - 레벨4: 성능개선 | 배포 \n" +
                             "  - 레벨5: ");
         System.out.println("#############################################");
+    }
+
+    public static void showMatchingResult(Pairs pairs) {
+        StringBuilder sb = new StringBuilder();
+        for (Pair pair : pairs.getPairs()) {
+            sb.append(String.join(" : ", pair.getPair()) + "\n");
+        }
+        System.out.println(sb);
     }
 }

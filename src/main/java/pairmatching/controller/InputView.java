@@ -16,7 +16,7 @@ public class InputView {
         System.out.println("과정, 레벨, 미션을 선택하세요.\n" +
                             "ex) 백엔드, 레벨1, 자동차경주");
         String input = Console.readLine();
-        return input.split(",");
+        return input.replace(" ", "").split(",");
 
     }
 }

@@ -20,4 +20,13 @@ public enum Mission {
         this.level = level;
         this.mission = mission;
     }
+
+    public static Mission get(String s) {
+        for (Mission mission : values()) {
+            if (mission.mission.equals(s)) {
+                return mission;
+            }
+        }
+        throw new IllegalArgumentException("해당 레벨은 없습니다.");
+    }
 }

@@ -1,23 +1,25 @@
 package pairmatching.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class crewNameReader {
+public class CrewNameReader {
 
-    public crewNameReader() {
+    public CrewNameReader() {
     }
 
-    public List<String> readFile(String course) {
+    public List<String> readFileAndShuffle(Course course) {
         File file = new File("src/main/resources/backend-crew.md");
 
-        if (course.equals("프론트엔드")) {
+        if (course.equals(Course.FRONTEND)) {
             file = new File("src/main/resources/frontend-crew.md");
         }
-        return read(file);
+        return Randoms.shuffle(read(file));
     }
 
     private List<String> read(File file) {

@@ -13,4 +13,13 @@ public enum Level {
     Level(String level) {
         this.level = level;
     }
+
+    public static Level get(String s) {
+        for (Level level : values()) {
+            if (level.level.equals(s)) {
+                return level;
+            }
+        }
+        throw new IllegalArgumentException("해당 레벨은 없습니다.");
+    }
 }
