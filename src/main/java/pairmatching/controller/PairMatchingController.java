@@ -1,6 +1,7 @@
 package pairmatching.controller;
 
 import pairmatching.domain.*;
+import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
 public class PairMatchingController {
@@ -53,12 +54,18 @@ public class PairMatchingController {
             Level level = Level.get(courseLevelMission[1]);
             Mission mission = Mission.get(courseLevelMission[2]);
             Pairs pairs = new Pairs();
+            ifOverlappedPairsTryRematchThreeTimes(matchingInfo, course, mission, pairs);
+            OutputView.showMatchingResult(pairs);
+        }
+    }
+
+    private void ifOverlappedPairsTryRematchThreeTimes(MatchingInfo matchingInfo, Course course, Mission mission, Pairs pairs) {
+        try {
             pairs.getPairs(course);
             if (matchingInfo.isExist(course, mission)) {
                 reMatchOrShowExistingPairs(matchingInfo, course, mission, pairs);
             }
             matchingInfo.add(course, mission, pairs);
-            OutputView.showMatchingResult(pairs);
         }
     }
 
